@@ -26,3 +26,28 @@ async def root():
     return {"patients": get_patients()}
 
 
+@app.delete("/patients/delete")
+async def root():
+    try:
+        deleted = clear_patients()
+        return {"deleted": deleted.deleted_count}
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unhandeled exception occured. Please check the connection to database.\n{e}",
+        )
+
+
+@app.put("/patients/fill")
+async def root():
+    try:
+        inserted = fill_patients()
+        return {"inserted": inserted}
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unhandeled exception occured. Please check the connection to database.\n{e}",
+        )
+

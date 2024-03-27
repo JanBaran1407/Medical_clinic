@@ -1,5 +1,5 @@
-import './main.css';
-
+import './App.css';
+import PatientList from './PatientList';
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       </div>
       <div className='contentContainer'>
         <div className='content'>
-          
+          <PatientList></PatientList>
         </div>
       </div>
 

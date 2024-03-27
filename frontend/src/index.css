@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.background-gradient {
+  background: linear-gradient(to right, #edddd2, #FBF3D5, #9CAFAA);
+  background-size: 400% 200%;
+  animation: gradient 10s infinite ease-in-out;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.addButton,
+.saveButton {
+  background-color: #c9d2a8;
+}
+
+.selectSort,
+.searchInput,
+.editButton {
+  background-color: #EFBC9B;
+}
+
+.cancelButton,
+.deleteButton {
+  background-color: #efa89b;
+}
+
+.selectSort,
+.searchInput,
+.addButton,
+.cancelButton,
+.saveButton {
+  font-size: 14pt;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.deleteButton,
+.editButton {
+  font-size: 10pt;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.selectSort:hover,
+.searchInput:hover,
+.deleteButton:hover,
+.editButton:hover {
+  cursor: pointer;
+}
+
+.deleteButton:hover,
+.editButton:hover {
+  border: 2px solid black;
+}
+
+.addButton:hover,
+.cancelButton:hover,
+.saveButton:hover {
+  font-size: 14pt;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+  cursor: pointer;
+}
