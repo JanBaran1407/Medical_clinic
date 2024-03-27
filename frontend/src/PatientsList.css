@@ -1,0 +1,7 @@
+.patientsContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 5px;
+    font-size: 15pt
+}

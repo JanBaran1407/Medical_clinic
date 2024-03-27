@@ -51,3 +51,77 @@ async def root():
             detail=f"Unhandeled exception occured. Please check the connection to database.\n{e}",
         )
 
+
+@app.post("/patient/add")
+async def root(request: Request):
+
+    try:
+        patient_data = await request.json()
+        validate_patient_data(patient_data)
+        inserted = add_patient(patient_data)
+        return {"inserted": inserted}
+
+    except InvalidPesel as e:
+        raise HTTPException(
+            status_code=422,
+            detail="Pesel number is not valid, please make sure it has 11 digits and does not contain any other characters.",
+        )
+    except InvalidZipCode as e:
+        raise HTTPException(
+            status_code=422,
+            detail="Zip Code number is not valid, please make sure it has two parts divided by '-' character.",
+        )
+    except InvalidPeselValue as e:
+        raise HTTPException(
+            status_code=422,
+            detail="Please check if pesel number contains correct values. 3 and 4 number must be less or eqauls to 12 and 4 and 5 number must be less or eqauls 31.",
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unhandeled exception occured. Please check the connection to database.\n{e}",
+        )
+
+
+@app.delete("/patient/delete")
+async def root(request: Request):
+    try:
+        patient_data = await request.json()
+        deleted = delete_patient(patient_data["id"])
+        return {"deleted": deleted}
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unhandeled exception occured. Please check the connection to database.\n{e}",
+        )
+
+
+@app.patch("/patient/update")
+async def root(request: Request):
+    try:
+        patient_data = await request.json()
+        validate_patient_data(patient_data)
+        updated = update_patient(patient_data)
+        return {"updated": updated}
+
+    except InvalidPesel as e:
+        raise HTTPException(
+            status_code=422,
+            detail="Pesel number is not valid, please make sure it has 11 digits and does not contain any other characters.",
+        )
+    except InvalidZipCode as e:
+        raise HTTPException(
+            status_code=422,
+            detail="Zip Code number is not valid, please make sure it has two parts divided by '-' character.",
+        )
+    except InvalidPeselValue as e:
+        raise HTTPException(
+            status_code=422,
+            detail="Please check if pesel number contains correct values. 3 and 4 number must be less or eqauls to 12 and 4 and 5 number must be less or eqauls 31.",
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unhandeled exception occured. Please check the connection to database.\n{e}",
+        )
